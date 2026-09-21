@@ -1,0 +1,43 @@
+camera:
+  id: camera01
+  # macOS exposes the connected DS-UVC-U168R using this generic UVC name.
+  name_contains: 4K USB Camera
+  device_index: null
+  preferred_modes:
+    # 4K modes were rejected after real tests; see docs/hardware-validation.md.
+    - [2560, 1440, 30]
+    - [2560, 1440, 25]
+    - [1920, 1080, 30]
+capture:
+  segment_minutes: 30
+  container: mkv
+  encoder_preference: [hevc_videotoolbox, h264_videotoolbox]
+  # NV12 uses less USB bandwidth than UYVY422.
+  pixel_format: nv12
+  bitrate: 12M
+  reconnect_seconds: 5
+storage:
+  external_data_root: null  # Set CBM_DATA_ROOT to your mounted external disk directory.
+  warning_free_percent: 15
+  cleanup_free_percent: 10
+  stop_free_percent: 10
+  retention_days: 7
+  max_recordings_gb: null
+analysis:
+  fps: 5
+  live_snapshot_fps: 1
+  input_width: 960
+  person_model: yolo11n.pt
+  open_vocabulary_model: yolov8s-worldv2.pt
+  open_vocabulary_image_size: 1280
+  # OBS already rotates the current portrait scene; do not rotate it a second time.
+  rotation_degrees: 0
+  person_confidence: 0.35
+  cigarette_confidence: 0.30
+  butt_confidence: 0.25
+  draw_output: true
+  open_vocabulary_confirmation: false
+events:
+  pre_seconds: 10
+  post_seconds: 20
+  ground_roi: null

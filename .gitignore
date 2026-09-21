@@ -1,0 +1,45 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Runtime data, evidence, databases, logs and model weights never enter Git.
+data/**
+!data/.gitkeep
+models/**
+!models/.gitkeep
+logs/**
+!logs/.gitkeep
+*.db
+*.db-*
+*.sqlite*
+*.log
+*.pt
+*.pth
+*.onnx
+*.mlmodel
+*.mlpackage
+*.mkv
+*.mp4
+*.mov
+
+# Local analysis outputs
+outputs/
+
+# Local overrides and additional evidence formats
+config/local*.yaml
+.env.*
+!.env.example
+weights/
+*.avi
+*.webm
+*.jpg
+*.jpeg
+*.png
+*.zip

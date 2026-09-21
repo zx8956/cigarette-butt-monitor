@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cigarette-butt-monitor"
+version = "0.1.0"
+description = "Local-first cigarette-butt disposal monitoring proof of concept"
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "lap>=0.5.12,<1",
+  "numpy>=1.26,<3",
+  "opencv-python>=4.10,<5",
+  "pydantic>=2.7,<3",
+  "PyYAML>=6,<7",
+  "ultralytics>=8.3,<9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.8,<1",
+]
+
+[project.scripts]
+cbm = "app.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
