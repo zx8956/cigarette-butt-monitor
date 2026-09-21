@@ -28,4 +28,3 @@ class TrackSummary:
         result = asdict(self)
         result["dwell_seconds"] = self.dwell_seconds
         return result
-

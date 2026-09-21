@@ -45,4 +45,3 @@ def delete_recording(path: Path, data_root: Path) -> None:
     if not safe_path.is_file():
         raise ValueError("only regular recording files can be deleted")
     safe_path.unlink()
-

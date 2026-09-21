@@ -24,4 +24,3 @@ def initialize_layout(path: Path) -> dict[str, Path]:
     for directory in layout.values():
         directory.mkdir(parents=True, exist_ok=True)
     return layout
-

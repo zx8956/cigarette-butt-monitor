@@ -28,4 +28,3 @@ def test_automatic_deletion_rejects_non_recordings(tmp_path: Path, relative: str
     with pytest.raises(ValueError):
         delete_recording(target, tmp_path)
     assert target.exists()
-

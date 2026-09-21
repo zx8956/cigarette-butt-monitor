@@ -23,4 +23,3 @@ def select_encoder(preferences: list[str], installed: set[str]) -> str:
     if selected is None:
         raise RuntimeError("no configured VideoToolbox hardware encoder is available")
     return selected
-

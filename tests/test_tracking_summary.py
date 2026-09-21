@@ -9,4 +9,3 @@ def test_track_summary_keeps_time_confidence_and_trail():
     assert result["max_confidence"] == 0.8
     assert result["observed_frames"] == 2
     assert result["smoking_or_cigarette_detected"] is False
-

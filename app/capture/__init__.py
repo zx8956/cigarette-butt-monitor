@@ -1,2 +1,1 @@
 """Video input and recording."""
-

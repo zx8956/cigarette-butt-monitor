@@ -20,4 +20,3 @@ def test_device_listing_and_target_match():
 
 def test_missing_camera_returns_none():
     assert find_target(parse_device_listing(LISTING), "not-connected") is None
-

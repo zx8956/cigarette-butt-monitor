@@ -138,4 +138,3 @@ def analyze_people(
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     report["report_path"] = str(report_path)
     return report
-

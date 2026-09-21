@@ -28,4 +28,3 @@ def setup_logging(log_root: Path, level: str = "INFO") -> None:
         errors.setLevel(logging.ERROR)
         errors.setFormatter(formatter)
         root.addHandler(errors)
-

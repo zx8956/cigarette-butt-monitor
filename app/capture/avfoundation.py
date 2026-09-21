@@ -51,4 +51,3 @@ def find_target(devices: list[AVDevice], name_contains: str) -> AVDevice | None:
         (device for device in devices if device.kind == "video" and needle in device.name.casefold()),
         None,
     )
-
