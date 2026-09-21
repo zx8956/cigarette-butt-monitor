@@ -31,7 +31,10 @@ def main():
     if not cap.isOpened():
         raise RuntimeError("Cannot open real video")
     fps = cap.get(cv2.CAP_PROP_FPS)
-    origin = datetime.strptime(args.video.stem, "%Y-%m-%d %H-%M-%S")
+    try:
+        origin = datetime.strptime(args.video.stem, "%Y-%m-%d %H-%M-%S")
+    except ValueError:
+        origin = datetime.strptime(args.video.stem.split("_", 1)[-1], "%Y-%m-%d_%H-%M-%S")
     cap.set(cv2.CAP_PROP_POS_MSEC, args.start * 1000)
     if args.sequence_only:
         tiles = []
@@ -60,6 +63,7 @@ def main():
     sampled = []
     last_second = -1
     n = 0
+    last_decoded_seconds = None
     if args.rerank_json:
         prior = json.loads(args.rerank_json.read_text())
         rows = prior["frames"]
@@ -103,6 +107,7 @@ def main():
         sec = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
         if args.end is not None and sec >= args.end:
             break
+        last_decoded_seconds = sec
         stamp = (origin + timedelta(seconds=sec)).strftime("%H:%M:%S.%f")[:-3]
         analysis_frame = (
             cv2.resize(frame, None, fx=args.scale, fy=args.scale) if args.scale != 1 else frame
@@ -197,6 +202,7 @@ def main():
             {
                 "source": str(args.video),
                 "decoded_frames": n,
+                "last_decoded_seconds": last_decoded_seconds,
                 "fps": fps,
                 "start_seconds": args.start,
                 "spatial_scale": args.scale,
