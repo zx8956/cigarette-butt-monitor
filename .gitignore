@@ -43,3 +43,7 @@ weights/
 *.jpeg
 *.png
 *.zip
+
+# Explicitly approved public README examples only
+!docs/examples/sequence-113933.png
+!docs/examples/sequence-115226.png
